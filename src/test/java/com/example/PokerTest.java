@@ -91,7 +91,7 @@ public class PokerTest {
     }
 
     @Test
-    void should_player1_wins_when_compare_given_straight() {
+    void should_player2_wins_when_compare_given_straight() {
         // given
         Compare compare = new Compare();
         Player player1 = new Player(Arrays.asList("3H", "4D", "5S", "6C", "7D"));
