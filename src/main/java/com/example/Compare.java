@@ -43,7 +43,7 @@ public class Compare {
                         map1.put(poker.charAt(0), number + 1);
                     }
                 }
-                for (String poker: pokerList1) {
+                for (String poker: pokerList2) {
                     if(map2.get(poker.charAt(0)) == null) {
                         map2.put(poker.charAt(0), 1);
                     } else {
@@ -69,6 +69,71 @@ public class Compare {
                 }
                 if(numberList.indexOf(c1) == numberList.indexOf(c2)) {
                     return "Tie.";
+                }
+            }
+            if(getTypfOfPoker(pokerList1) == "Two Pairs") {
+                List<Character> list1 = new ArrayList<>();
+                List<Character> list2 = new ArrayList<>();
+                LinkedHashMap<Character, Integer> map1 = new LinkedHashMap<>();
+                LinkedHashMap<Character, Integer> map2 = new LinkedHashMap<>();
+                for (String poker: pokerList1) {
+                    if(map1.get(poker.charAt(0)) == null) {
+                        map1.put(poker.charAt(0), 1);
+                    } else {
+                        int number = map1.get(poker.charAt(0));
+                        map1.put(poker.charAt(0), number + 1);
+                    }
+                }
+                for (String poker: pokerList2) {
+                    if(map2.get(poker.charAt(0)) == null) {
+                        map2.put(poker.charAt(0), 1);
+                    } else {
+                        int number = map2.get(poker.charAt(0));
+                        map2.put(poker.charAt(0), number + 1);
+                    }
+                }
+                Character c1 = '0';
+                Character c2 = '0';
+                for (Character key: map1.keySet()) {
+                    if(map1.get(key) == 2) {
+                        list1.add(key);
+                    }
+                    if(map1.get(key) == 1) {
+                        c1 = key;
+                    }
+                }
+                for (Character key: map2.keySet()) {
+                    if(map2.get(key) == 2) {
+                        list2.add(key);
+                    }
+                    if(map2.get(key) == 1) {
+                        c2 = key;
+                    }
+                }
+                if(convertToInteger(list1.get(0)) > convertToInteger(list2.get(0))) {
+                    return "player1 wins.";
+                }
+                if(convertToInteger(list1.get(0)) < convertToInteger(list2.get(0))) {
+                    return "player2 wins.";
+                }
+                if(convertToInteger(list1.get(0)) == convertToInteger(list2.get(0))) {
+                    if(convertToInteger(list1.get(1)) > convertToInteger(list2.get(1))) {
+                        return "player1 wins.";
+                    }
+                    if(convertToInteger(list1.get(1)) < convertToInteger(list2.get(1))) {
+                        return "player2 wins.";
+                    }
+                    if(convertToInteger(list1.get(1)) == convertToInteger(list2.get(1))) {
+                        if(convertToInteger(c1) > convertToInteger(c2)) {
+                            return "player1 wins.";
+                        }
+                        if(convertToInteger(c1) < convertToInteger(c2)) {
+                            return "player2 wins.";
+                        }
+                        if(convertToInteger(c1) == convertToInteger(c2)) {
+                            return "Tie.";
+                        }
+                    }
                 }
             }
         }
