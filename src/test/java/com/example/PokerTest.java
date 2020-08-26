@@ -23,6 +23,20 @@ public class PokerTest {
     }
 
     @Test
+    void should_return_player1_win_when_compare_given_not_repeat_card_and_not_flush_but_max_equals() {
+        // given
+        Compare compare = new Compare();
+        Player player1 = new Player(Arrays.asList("2H", "3D", "5S", "9C", "KD"));
+        Player player2 = new Player(Arrays.asList("2C", "3H", "5S", "8C", "KH"));
+
+        // when
+        String actual = compare.comparePoker(player1, player2);
+
+        // then
+        assertEquals("player1 wins.", actual);
+    }
+
+    @Test
     void should_return_tie_when_compare_given_not_repeat_card_but_flush_and_max_card_equals() {
         // given
         Compare compare = new Compare();
@@ -47,4 +61,6 @@ public class PokerTest {
         // then
         assertEquals("player2 wins.", actual);
     }
+
+
 }
