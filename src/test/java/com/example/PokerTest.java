@@ -90,5 +90,18 @@ public class PokerTest {
         assertEquals("Tie.", actual);
     }
 
+    @Test
+    void should_player1_wins_when_compare_given_straight() {
+        // given
+        Compare compare = new Compare();
+        Player player1 = new Player(Arrays.asList("3H", "4D", "5S", "6C", "7D"));
+        Player player2 = new Player(Arrays.asList("4D", "5S", "6C", "7D", "8S"));
+        // when
+        String actual = compare.comparePoker(player1,player2);
+
+        // then
+        assertEquals("player2 wins.", actual);
+    }
+
 
 }

@@ -1,6 +1,5 @@
 package com.example;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.*;
 
@@ -16,7 +15,8 @@ public class Compare {
     public String comparePoker(Player player1, Player player2) {
         List<String> pokerList1 = sortPokerList(player1.getPokerList());
         List<String> pokerList2 = sortPokerList(player2.getPokerList());
-
+        String test1 = getTypfOfPoker(pokerList1);
+        String test2 = getTypfOfPoker(pokerList2);
         if(getTypfOfPoker(pokerList1) == getTypfOfPoker(pokerList2)) {
             if(getTypfOfPoker(pokerList1) == "High Card" || getTypfOfPoker(pokerList1) == "Flush" || getTypfOfPoker(pokerList1) == "Straight flush") {
                 for (int i = 0; i < PokerLength; i++) {
@@ -122,9 +122,9 @@ public class Compare {
                 initNumber = convertToInteger(key.charAt(0));
                 break;
             }
-            for(String key: pokerMap.keySet()) {
-                if(convertToInteger(key.charAt(0)) == initNumber) {
-                    initNumber += 1;
+            for(Character key: pokerNumberMap.keySet()) {
+                if(convertToInteger(key) == initNumber) {
+                    initNumber -= 1;
                 } else {
                     isStraight = false;
                 }
