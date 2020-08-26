@@ -136,6 +136,71 @@ public class Compare {
                     }
                 }
             }
+            if(getTypfOfPoker(pokerList1) == "Three of a Kind") {
+                Character c1 = '0';
+                Character c2 = '0';
+                List<Character> list1 = new ArrayList<>();
+                List<Character> list2 = new ArrayList<>();
+                LinkedHashMap<Character, Integer> map1 = new LinkedHashMap<>();
+                LinkedHashMap<Character, Integer> map2 = new LinkedHashMap<>();
+                for (String poker: pokerList1) {
+                    if(map1.get(poker.charAt(0)) == null) {
+                        map1.put(poker.charAt(0), 1);
+                    } else {
+                        int number = map1.get(poker.charAt(0));
+                        map1.put(poker.charAt(0), number + 1);
+                    }
+                }
+                for (String poker: pokerList2) {
+                    if(map2.get(poker.charAt(0)) == null) {
+                        map2.put(poker.charAt(0), 1);
+                    } else {
+                        int number = map2.get(poker.charAt(0));
+                        map2.put(poker.charAt(0), number + 1);
+                    }
+                }
+                for (Character key: map1.keySet()) {
+                    if(map1.get(key) == 3) {
+                        c1 = key;
+                    }
+                    if(map1.get(key) == 1) {
+                        list1.add(key);
+                    }
+                }
+                for (Character key: map2.keySet()) {
+                    if(map2.get(key) == 3) {
+                        c2 = key;
+                    }
+                    if(map2.get(key) == 1) {
+                        list2.add(key);
+                    }
+                }
+                if(convertToInteger(c1) > convertToInteger(c2)) {
+                    return PLAYER_1_WINS;
+                }
+                if(convertToInteger(c1) < convertToInteger(c2)) {
+                    return PLAYER_2_WINS;
+                }
+                if(convertToInteger(c1) == convertToInteger(c2)) {
+                    if(convertToInteger(list1.get(0)) > convertToInteger(list2.get(0))) {
+                        return PLAYER_1_WINS;
+                    }
+                    if(convertToInteger(list1.get(0)) < convertToInteger(list2.get(0))) {
+                        return PLAYER_2_WINS;
+                    }
+                    if(convertToInteger(list1.get(0)) == convertToInteger(list2.get(0))) {
+                        if(convertToInteger(list1.get(1)) > convertToInteger(list2.get(1))) {
+                            return PLAYER_1_WINS;
+                        }
+                        if(convertToInteger(list1.get(1)) < convertToInteger(list2.get(1))) {
+                            return PLAYER_2_WINS;
+                        }
+                        if(convertToInteger(list1.get(1)) == convertToInteger(list2.get(1))) {
+                            return TIE;
+                        }
+                    }
+                }
+            }
         }
         return null;
 
