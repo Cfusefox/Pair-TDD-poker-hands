@@ -103,5 +103,17 @@ public class PokerTest {
         assertEquals("player2 wins.", actual);
     }
 
+    @Test
+    void should_player2_wins_when_compare_given_two_pairs() {
+        // given
+        Compare compare = new Compare();
+        Player player1 = new Player(Arrays.asList("3H", "3D", "5S", "5H", "7D"));
+        Player player2 = new Player(Arrays.asList("4D", "4S", "6C", "6D", "8S"));
+        // when
+        String actual = compare.comparePoker(player1,player2);
+
+        // then
+        assertEquals("player2 wins.", actual);
+    }
 
 }
