@@ -265,6 +265,13 @@ public class Compare {
                     return PLAYER_2_WINS;
                 }
             }
+        } else {
+            if(typeList.indexOf(getTypfOfPoker(pokerList1)) > typeList.indexOf((getTypfOfPoker(pokerList2)))) {
+                return PLAYER_1_WINS;
+            }
+            if(typeList.indexOf(getTypfOfPoker(pokerList1)) < typeList.indexOf((getTypfOfPoker(pokerList2)))) {
+                return PLAYER_2_WINS;
+            }
         }
         return null;
 
