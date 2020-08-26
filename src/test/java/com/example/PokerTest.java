@@ -19,6 +19,6 @@ public class PokerTest {
         String actual = compare.comparePoker(player1, player2);
 
         // then
-        assertEquals("player2 wins. - with high card:Ace", actual);
+        assertEquals("player2 wins.", actual);
     }
 }
