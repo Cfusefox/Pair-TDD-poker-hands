@@ -18,7 +18,8 @@ public class Compare {
         String test1 = getTypfOfPoker(pokerList1);
         String test2 = getTypfOfPoker(pokerList2);
         if(getTypfOfPoker(pokerList1) == getTypfOfPoker(pokerList2)) {
-            if(getTypfOfPoker(pokerList1) == "High Card" || getTypfOfPoker(pokerList1) == "Flush" || getTypfOfPoker(pokerList1) == "Straight flush") {
+            if(getTypfOfPoker(pokerList1) == "High Card" || getTypfOfPoker(pokerList1) == "Flush" ||
+                    getTypfOfPoker(pokerList1) == "Straight flush" || getTypfOfPoker(pokerList1) == "Straight") {
                 for (int i = 0; i < PokerLength; i++) {
                     if(numberList.indexOf(pokerList1.get(i).charAt(0)) > numberList.indexOf(pokerList2.get(i).charAt(0))) {
                         return PLAYER_1_WINS;
