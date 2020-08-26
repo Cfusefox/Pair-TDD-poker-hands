@@ -1,6 +1,7 @@
 package com.example;
 
 
+import javax.security.auth.callback.CallbackHandler;
 import java.util.*;
 
 public class Compare {
@@ -225,6 +226,44 @@ public class Compare {
                     return PLAYER_1_WINS;
                 }
                 if(convertToInteger(three1) < convertToInteger(three2)) {
+                    return PLAYER_2_WINS;
+                }
+            }
+            if(getTypfOfPoker(pokerList1) == "Four of a kind") {
+                Character c1 = '0';
+                Character c2 = '0';
+                LinkedHashMap<Character, Integer> map1 = new LinkedHashMap<>();
+                LinkedHashMap<Character, Integer> map2 = new LinkedHashMap<>();
+                for (String poker: pokerList1) {
+                    if(map1.get(poker.charAt(0)) == null) {
+                        map1.put(poker.charAt(0), 1);
+                    } else {
+                        int number = map1.get(poker.charAt(0));
+                        map1.put(poker.charAt(0), number + 1);
+                    }
+                }
+                for (String poker: pokerList2) {
+                    if(map2.get(poker.charAt(0)) == null) {
+                        map2.put(poker.charAt(0), 1);
+                    } else {
+                        int number = map2.get(poker.charAt(0));
+                        map2.put(poker.charAt(0), number + 1);
+                    }
+                }
+                for (Character key: map1.keySet()) {
+                    if(map1.get(key) == 4) {
+                        c1 = key;
+                    }
+                }
+                for (Character key: map2.keySet()) {
+                    if(map2.get(key) == 4) {
+                        c2 = key;
+                    }
+                }
+                if(convertToInteger(c1) > convertToInteger(c2)) {
+                    return PLAYER_1_WINS;
+                }
+                if(convertToInteger(c1) < convertToInteger(c2)) {
                     return PLAYER_2_WINS;
                 }
             }
