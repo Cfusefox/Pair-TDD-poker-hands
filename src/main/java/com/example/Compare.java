@@ -1,7 +1,6 @@
 package com.example;
 
 
-import javax.security.auth.callback.CallbackHandler;
 import java.util.*;
 
 public class Compare {
@@ -16,9 +15,9 @@ public class Compare {
     public String comparePoker(Player player1, Player player2) {
         List<String> pokerList1 = sortPokerList(player1.getPokerList());
         List<String> pokerList2 = sortPokerList(player2.getPokerList());
-        if(getTypfOfPoker(pokerList1) == getTypfOfPoker(pokerList2)) {
-            if(getTypfOfPoker(pokerList1) == "High Card" || getTypfOfPoker(pokerList1) == "Flush" ||
-                    getTypfOfPoker(pokerList1) == "Straight flush" || getTypfOfPoker(pokerList1) == "Straight") {
+        if(getTypeOfPoker(pokerList1) == getTypeOfPoker(pokerList2)) {
+            if(getTypeOfPoker(pokerList1) == "High Card" || getTypeOfPoker(pokerList1) == "Flush" ||
+                    getTypeOfPoker(pokerList1) == "Straight flush" || getTypeOfPoker(pokerList1) == "Straight") {
                 for (int i = 0; i < PokerLength; i++) {
                     if(numberList.indexOf(pokerList1.get(i).charAt(0)) > numberList.indexOf(pokerList2.get(i).charAt(0))) {
                         return PLAYER_1_WINS;
@@ -29,7 +28,7 @@ public class Compare {
                 }
                 return TIE;
             }
-            if(getTypfOfPoker(pokerList1) == "Pair") {
+            if(getTypeOfPoker(pokerList1) == "Pair") {
                 LinkedHashMap<Character, Integer> map1 = new LinkedHashMap<>();
                 LinkedHashMap<Character, Integer> map2 = new LinkedHashMap<>();
                 Character c1 = '0';
@@ -70,7 +69,7 @@ public class Compare {
                     return "Tie.";
                 }
             }
-            if(getTypfOfPoker(pokerList1) == "Two Pairs") {
+            if(getTypeOfPoker(pokerList1) == "Two Pairs") {
                 List<Character> list1 = new ArrayList<>();
                 List<Character> list2 = new ArrayList<>();
                 LinkedHashMap<Character, Integer> map1 = new LinkedHashMap<>();
@@ -135,7 +134,7 @@ public class Compare {
                     }
                 }
             }
-            if(getTypfOfPoker(pokerList1) == "Three of a Kind") {
+            if(getTypeOfPoker(pokerList1) == "Three of a Kind") {
                 Character c1 = '0';
                 Character c2 = '0';
                 List<Character> list1 = new ArrayList<>();
@@ -181,7 +180,7 @@ public class Compare {
                     return PLAYER_2_WINS;
                 }
             }
-            if(getTypfOfPoker(pokerList1) == "Full House") {
+            if(getTypeOfPoker(pokerList1) == "Full House") {
                 Character three1 = '0';
                 Character three2 = '0';
                 Character two1 = '0';
@@ -227,7 +226,7 @@ public class Compare {
                     return PLAYER_2_WINS;
                 }
             }
-            if(getTypfOfPoker(pokerList1) == "Four of a kind") {
+            if(getTypeOfPoker(pokerList1) == "Four of a kind") {
                 Character c1 = '0';
                 Character c2 = '0';
                 LinkedHashMap<Character, Integer> map1 = new LinkedHashMap<>();
@@ -266,10 +265,10 @@ public class Compare {
                 }
             }
         } else {
-            if(typeList.indexOf(getTypfOfPoker(pokerList1)) > typeList.indexOf((getTypfOfPoker(pokerList2)))) {
+            if(typeList.indexOf(getTypeOfPoker(pokerList1)) > typeList.indexOf((getTypeOfPoker(pokerList2)))) {
                 return PLAYER_1_WINS;
             }
-            if(typeList.indexOf(getTypfOfPoker(pokerList1)) < typeList.indexOf((getTypfOfPoker(pokerList2)))) {
+            if(typeList.indexOf(getTypeOfPoker(pokerList1)) < typeList.indexOf((getTypeOfPoker(pokerList2)))) {
                 return PLAYER_2_WINS;
             }
         }
@@ -290,7 +289,7 @@ public class Compare {
         return sortedPokerList;
     }
 
-    protected String getTypfOfPoker(List<String> pokerList) {
+    protected String getTypeOfPoker(List<String> pokerList) {
         LinkedHashMap<Character, Integer> pokerNumberMap = new LinkedHashMap<>();
         LinkedHashMap<String, Integer> pokerMap = new LinkedHashMap<>();
         for (String poker: pokerList) {
