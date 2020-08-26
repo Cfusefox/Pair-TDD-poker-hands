@@ -34,4 +34,17 @@ public class PokerTest {
         // then
         assertEquals("Tie.", actual);
     }
+
+    @Test
+    void should_return_players_win_when_given_not_repeat_card_but_flush_and_player2_max_card_bigger() {
+        // given
+        Compare compare = new Compare();
+        Player player1 = new Player(Arrays.asList("2H", "3H", "5H", "9H", "KH"));
+        Player player2 = new Player(Arrays.asList("2C", "3C", "5C", "9C", "AC"));
+        // when
+        String actual = compare.comparePoker(player1,player2);
+
+        // then
+        assertEquals("player2 wins.", actual);
+    }
 }
