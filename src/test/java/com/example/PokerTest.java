@@ -12,7 +12,7 @@ public class PokerTest {
     void should_return_player2_win_when_compare_given_not_repeat_card_and_not_flush() {
         // given
         Compare compare = new Compare();
-        Player player1 = new Player(Arrays.asList("2H", "3D", "5S", "9C", "KD"));
+        Player player1 = new Player(Arrays.asList("2H", "3D", "9C", "KD", "5S"));
         Player player2 = new Player(Arrays.asList("2C", "3H", "4S", "9C", "AH"));
 
         // when
