@@ -117,7 +117,7 @@ public class PokerTest {
     }
 
     @Test
-    void should_player2_wins_when_compare_given_two_pairs_and_equals() {
+    void should_tie_when_compare_given_two_pairs_and_equals() {
         // given
         Compare compare = new Compare();
         Player player1 = new Player(Arrays.asList("3H", "3D", "5S", "5H", "7D"));
@@ -128,5 +128,7 @@ public class PokerTest {
         // then
         assertEquals("Tie.", actual);
     }
+
+
 
 }
